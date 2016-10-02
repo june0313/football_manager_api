@@ -3,6 +3,7 @@ package com.wayne.controller.hello;
 import com.google.common.collect.ImmutableList;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -15,8 +16,8 @@ import java.util.List;
 @RestController
 public class HelloController {
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
-	public String hello() {
-		return "hello, 안녕";
+	public String hello(@RequestParam(required = false) String name) {
+		return "hello, " + name;
 	}
 
 	@RequestMapping(value = "/hello2", method = RequestMethod.GET)

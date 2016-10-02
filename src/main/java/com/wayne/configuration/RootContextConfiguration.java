@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan
+@ComponentScan(basePackages = {"com.wayne.repository"})
 public class RootContextConfiguration {
 
 }
