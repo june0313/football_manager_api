@@ -12,6 +12,7 @@ import static org.junit.Assert.fail;
 /**
  * @author wayne
  * @version 1.0
+ * 순수 Java 기반에서의 JPA 테스트
  */
 public class JpaTest {
 

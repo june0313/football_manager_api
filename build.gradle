@@ -17,18 +17,21 @@ dependencies {
     // spring
     compile group: 'org.springframework', name: 'spring-context', version: '4.3.3.RELEASE'
     compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.3.RELEASE'
+    compile group: 'org.springframework', name: 'spring-test', version: '4.3.3.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version: '4.3.3.RELEASE'
+    compile group: 'org.springframework', name: 'spring-orm', version: '4.3.3.RELEASE'
 
     // spring-data-jpa
     compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.10.4.RELEASE'
-
-    // jpa 2.1
-    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.0.Final'
 
     // hibernate
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.2.Final'
 
     // h2
     compile group: 'com.h2database', name: 'h2', version: '1.4.192'
+
+    // tomcat jdbc connection pool
+    compile group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '8.5.5'
 
     // guava
     compile group: 'com.google.guava', name: 'guava', version: '19.0'
@@ -44,4 +47,7 @@ dependencies {
 
     // logback
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
+
+    // FEST fluent assertions
+    compile group: 'org.easytesting', name: 'fest-assert', version: '1.4'
 }
