@@ -27,8 +27,9 @@ dependencies {
     // hibernate
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.2.Final'
 
-    // h2
+    // databases
     compile group: 'com.h2database', name: 'h2', version: '1.4.192'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.4'
 
     // tomcat jdbc connection pool
     compile group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '8.5.5'

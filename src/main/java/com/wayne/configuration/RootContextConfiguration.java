@@ -1,9 +1,10 @@
 package com.wayne.configuration;
 
+import com.wayne.configuration.datasource.LocalDataSourceConfiguration;
+import com.wayne.configuration.datasource.TestDataSourceConfiguration;
 import org.apache.tomcat.jdbc.pool.DataSource;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.*;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -18,24 +19,21 @@ import java.util.Properties;
  * @version 1.0
  */
 @Configuration
+@Import({TestDataSourceConfiguration.class, LocalDataSourceConfiguration.class})
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"com.wayne.repository"})
 public class RootContextConfiguration {
 
-	@Bean
-	public DataSource dataSource() {
-		DataSource dataSource = new DataSource();
-		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:mem:test");
-		dataSource.setUsername("sa");
-		dataSource.setPassword("");
-		return dataSource;
-	}
+	@Autowired
+	private DataSource dataSource;
+
+	@Autowired
+	private Properties hibernateProperties;
 
 	@Bean
 	public PlatformTransactionManager transactionManager() {
 		JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
-		jpaTransactionManager.setDataSource(dataSource());
+		jpaTransactionManager.setDataSource(dataSource);
 		return jpaTransactionManager;
 	}
 
@@ -47,10 +45,10 @@ public class RootContextConfiguration {
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-		entityManagerFactoryBean.setDataSource(dataSource());
+		entityManagerFactoryBean.setDataSource(dataSource);
 		entityManagerFactoryBean.setPackagesToScan("com.wayne.domain");
 		entityManagerFactoryBean.setJpaVendorAdapter(hibernateJpaVendorAdapter());
-		entityManagerFactoryBean.setJpaProperties(hibernateProperties());
+		entityManagerFactoryBean.setJpaProperties(hibernateProperties);
 		return entityManagerFactoryBean;
 	}
 
@@ -59,16 +57,6 @@ public class RootContextConfiguration {
 		return new HibernateJpaVendorAdapter();
 	}
 
-	@Bean
-	public Properties hibernateProperties() {
-		Properties properties = new Properties();
-		properties.put("hibernate.dialect", org.hibernate.dialect.H2Dialect.class);
-		properties.put("hibernate.show_sql", true);
-		properties.put("hibernate.format_sql", true);
-		properties.put("hibernate.use_sql_comments", true);
-		properties.put("hibernate.id.new_generator_mappings", true);
-		properties.put("hibernate.hbm2ddl.auto", "create");
-		return properties;
-	}
+
 
 }
