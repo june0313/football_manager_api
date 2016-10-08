@@ -21,7 +21,7 @@ import java.util.Properties;
 @Configuration
 @Import({TestDataSourceConfiguration.class, LocalDataSourceConfiguration.class})
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"com.wayne.repository"})
+@ComponentScan(basePackages = {"com.wayne.repository", "com.wayne.service"})
 public class RootContextConfiguration {
 
 	@Autowired

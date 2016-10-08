@@ -14,14 +14,14 @@ import javax.persistence.PersistenceContext;
 public class PlayerRepository {
 
 	@PersistenceContext
-	private EntityManager em;
+	private EntityManager entityManager;
 
 	public void save(Player player) {
-		em.persist(player);
+		entityManager.persist(player);
 	}
 
 	public Player findOne(String email) {
-		return em.find(Player.class, email);
+		return entityManager.find(Player.class, email);
 	}
 
 }
