@@ -39,7 +39,7 @@ public class PlayerRepositoryTest {
 	@Test
 	public void testFindNonExistOne() throws Exception {
 		// when
-		Player player = playerRepository.findOne("test@test.com");
+		Player player = playerRepository.findOne(1L);
 
 		// then
 		assertThat(player).isNull();
@@ -51,7 +51,7 @@ public class PlayerRepositoryTest {
 		playerRepository.save(fixturePlayer);
 
 		// when
-		Player resultPlayer = playerRepository.findOne("test@test.com");
+		Player resultPlayer = playerRepository.findOne(1L);
 
 		// then
 		assertThat(resultPlayer).isNotNull();

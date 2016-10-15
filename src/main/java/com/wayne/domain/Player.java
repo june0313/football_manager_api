@@ -19,6 +19,10 @@ import java.util.Date;
 public class Player {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID", nullable = false)
+	private Long id;
+
 	@Column(name = "EMAIL", unique = true)
 	private String email;
 
@@ -49,6 +53,19 @@ public class Player {
 	@PreUpdate
 	private void preUpdate() {
 		updatedDate = new Date();
+	}
+
+	public void setClub(Club club) {
+		// 기존 클럽과의 관계 제거
+		if (null != this.club) {
+			this.club.removePlayer(this);
+		}
+
+		this.club = club;
+
+		if (null != club) {
+			club.addPlayer(this);
+		}
 	}
 
 }

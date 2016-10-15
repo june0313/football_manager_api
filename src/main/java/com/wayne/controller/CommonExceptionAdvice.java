@@ -27,4 +27,10 @@ public class CommonExceptionAdvice {
 		return new ResponseEntity<>("duplicate player", HttpStatus.BAD_REQUEST);
 	}
 
+	@ExceptionHandler(value = IllegalStateException.class)
+	public ResponseEntity<String> handleIllegalStateException(IllegalStateException e) {
+		log.info(e.getMessage());
+		return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+	}
+
 }

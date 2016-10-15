@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import java.util.List;
 
 /**
  * @author wayne
@@ -27,9 +27,9 @@ public class PlayerService {
 	}
 
 	private void validateDuplicatePlayer(Player player) {
-		Optional<Player> foundPlayer = Optional.ofNullable(playerRepository.findOne(player.getEmail()));
-		if (foundPlayer.isPresent()) {
-			throw new DuplicatePlayerException(foundPlayer.get().getEmail());
+		List<Player> foundPlayerList = playerRepository.findByEmail(player.getEmail());
+		if (foundPlayerList.size() > 0) {
+			throw new DuplicatePlayerException(foundPlayerList.get(0).getEmail());
 		}
 	}
 }

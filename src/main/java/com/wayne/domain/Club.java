@@ -19,12 +19,16 @@ import java.util.List;
 public class Club {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", nullable = false)
 	private Long id;
 
 	@Column(name = "NAME")
 	private String name;
+
+	@OneToOne
+	@JoinColumn(name = "CREATOR")
+	private Player creator;
 
 	@OneToMany(mappedBy = "club")
 	private List<Player> players = Lists.newArrayList();
@@ -46,6 +50,22 @@ public class Club {
 	@PreUpdate
 	private void preUpdate() {
 		updatedDate = new Date();
+	}
+
+	public static Club create(Player creator, String clubName) {
+		Club club = new Club();
+		club.setName(clubName);
+		club.setCreator(creator);
+		return club;
+	}
+
+	public void addPlayer(Player player) {
+		// TODO : 중북되는 선수에대한 처리 필요
+		this.players.add(player);
+	}
+
+	public void removePlayer(Player player) {
+		this.players.remove(player);
 	}
 
 }
