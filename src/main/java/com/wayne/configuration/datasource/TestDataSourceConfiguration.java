@@ -33,7 +33,7 @@ public class TestDataSourceConfiguration {
 		properties.put("hibernate.format_sql", true);
 		properties.put("hibernate.use_sql_comments", true);
 		properties.put("hibernate.id.new_generator_mappings", true);
-		properties.put("hibernate.hbm2ddl.auto", "create-drop");
+		properties.put("hibernate.hbm2ddl.auto", "create");
 		return properties;
 	}
 

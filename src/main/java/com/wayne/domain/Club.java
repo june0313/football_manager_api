@@ -1,36 +1,33 @@
 package com.wayne.domain;
 
+import com.google.common.collect.Lists;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author wayne
  * @version 1.0
  */
 @Entity
-@Table(name = "PLAYER")
+@Table(name = "CLUB")
 @Getter
 @Setter
-@ToString
-public class Player {
+public class Club {
 
 	@Id
-	@Column(name = "EMAIL", unique = true)
-	private String email;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID", nullable = false)
+	private Long id;
 
-	@Column(name = "PASSWORD")
-	private String password;
+	@Column(name = "NAME")
+	private String name;
 
-	@Column(name = "NICKNAME")
-	private String nickname;
-
-	@ManyToOne
-	@JoinColumn(name = "CLUB_ID")
-	private Club club;
+	@OneToMany(mappedBy = "club")
+	private List<Player> players = Lists.newArrayList();
 
 	@Column(name = "CREATED_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
