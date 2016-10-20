@@ -1,5 +1,6 @@
 package com.wayne.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Lists;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,9 +29,11 @@ public class Club {
 
 	@OneToOne
 	@JoinColumn(name = "CREATOR")
+	@JsonIgnore
 	private Player creator;
 
 	@OneToMany(mappedBy = "club")
+	@JsonIgnore
 	private List<Player> players = Lists.newArrayList();
 
 	@Column(name = "CREATED_DATE")

@@ -33,7 +33,7 @@ public class LocalDataSourceConfiguration {
 		properties.put("hibernate.format_sql", true);
 		properties.put("hibernate.use_sql_comments", true);
 		properties.put("hibernate.id.new_generator_mappings", true);
-		properties.put("hibernate.hbm2ddl.auto", "create");
+		properties.put("hibernate.hbm2ddl.auto", "update");
 		return properties;
 	}
 

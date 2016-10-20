@@ -1,6 +1,8 @@
 package com.wayne.service;
 
+import com.wayne.domain.Club;
 import com.wayne.domain.Player;
+import com.wayne.domain.PlayerDTO;
 import com.wayne.exception.DuplicatePlayerException;
 import com.wayne.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +34,33 @@ public class PlayerService {
 			throw new DuplicatePlayerException(foundPlayerList.get(0).getEmail());
 		}
 	}
+
+	public Player find(Long id) {
+		return playerRepository.findOne(id);
+	}
+
+	public List<Player> findAll() {
+		return playerRepository.findAll();
+	}
+
+	public Club findClubByPlayerId(Long id) {
+		Player player = this.find(id);
+
+		if (null == player) {
+			throw new IllegalStateException("존재하지 않는 선수입니다.");
+		}
+
+		return player.getClub();
+	}
+
+	public Player editPlayer(Long id, PlayerDTO dto) {
+		Player player = this.find(id);
+
+		if (null == player) {
+			throw new IllegalStateException("존재하지 않는 선수입니다.");
+		}
+
+		return player.update(dto);
+	}
+
 }

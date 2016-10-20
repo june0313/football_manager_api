@@ -25,9 +25,13 @@ public class PlayerRepository {
 		return entityManager.find(Player.class, id);
 	}
 
-	public List<Player> findByEmail(String email) {
-		String queryString = "select p from Player p where p.email=:email";
+	public List<Player> findAll() {
+		String queryString = "SELECT p FROM Player p";
+		return entityManager.createQuery(queryString, Player.class).getResultList();
+	}
 
+	public List<Player> findByEmail(String email) {
+		String queryString = "SELECT p FROM Player p WHERE p.email=:email";
 		return entityManager.createQuery(queryString, Player.class)
 			.setParameter("email", email)
 			.getResultList();

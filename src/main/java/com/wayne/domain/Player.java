@@ -1,5 +1,7 @@
 package com.wayne.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.common.base.Strings;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -27,6 +29,7 @@ public class Player {
 	private String email;
 
 	@Column(name = "PASSWORD")
+	@JsonIgnore
 	private String password;
 
 	@Column(name = "NICKNAME")
@@ -34,6 +37,7 @@ public class Player {
 
 	@ManyToOne
 	@JoinColumn(name = "CLUB_ID")
+	@JsonIgnore
 	private Club club;
 
 	@Column(name = "CREATED_DATE")
@@ -66,6 +70,18 @@ public class Player {
 		if (null != club) {
 			club.addPlayer(this);
 		}
+	}
+
+	public Player update(PlayerDTO dto) {
+		if (!Strings.isNullOrEmpty(dto.getNickName())) {
+			this.nickname = dto.getNickName();
+		}
+
+		if (!Strings.isNullOrEmpty(dto.getPassword())) {
+			this.password = dto.getPassword();
+		}
+
+		return this;
 	}
 
 }

@@ -4,6 +4,7 @@ import com.wayne.exception.DuplicatePlayerException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -31,6 +32,12 @@ public class CommonExceptionAdvice {
 	public ResponseEntity<String> handleIllegalStateException(IllegalStateException e) {
 		log.info(e.getMessage());
 		return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(value = HttpMessageConversionException.class)
+	public ResponseEntity<String> handleHttpMsgConversionException(HttpMessageConversionException e) {
+		log.error(e.getMessage(), e);
+		return new ResponseEntity<>("bad request.", HttpStatus.BAD_REQUEST);
 	}
 
 }
