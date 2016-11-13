@@ -6,6 +6,7 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -20,8 +21,9 @@ import java.util.Properties;
  */
 @Configuration
 @Import({TestDataSourceConfiguration.class, LocalDataSourceConfiguration.class})
-@EnableTransactionManagement
 @ComponentScan(basePackages = {"com.wayne.repository", "com.wayne.service"})
+@EnableTransactionManagement
+@EnableJpaRepositories(basePackages = "com.wayne.repository")
 public class RootContextConfiguration {
 
 	@Autowired
