@@ -1,12 +1,16 @@
 package com.wayne.service;
 
 import com.wayne.domain.Club;
+import com.wayne.domain.ClubDTO;
 import com.wayne.domain.Player;
 import com.wayne.repository.ClubRepository;
 import com.wayne.repository.PlayerRepository;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @author wayne
@@ -23,6 +27,13 @@ public class ClubService {
 
 	public Club find(Long clubId) {
 		return clubRepository.findOne(clubId);
+	}
+
+	public List<Player> findClubPlayers(Long clubId) {
+		Club club = clubRepository.findOne(clubId);
+		List<Player> players = club.getPlayers();
+		Hibernate.initialize(players);
+		return players;
 	}
 
 	public Club createClub(Long playerId, String clubName) {
@@ -48,4 +59,14 @@ public class ClubService {
 
 		return club;
 	}
+
+	public List<Club> findAll() {
+		return clubRepository.findAll();
+	}
+
+	public void update(Long id, ClubDTO dto) {
+		Club club = find(id);
+		club.setName(dto.getClubName());
+	}
+
 }

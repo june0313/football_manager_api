@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ClubCreationDTO {
+public class ClubDTO {
 	private Long playerId;
 	private String clubName;
 }

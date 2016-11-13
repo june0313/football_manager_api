@@ -32,7 +32,7 @@ public class Club {
 	@JsonIgnore
 	private Player creator;
 
-	@OneToMany(mappedBy = "club")
+	@OneToMany(mappedBy = "club", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<Player> players = Lists.newArrayList();
 

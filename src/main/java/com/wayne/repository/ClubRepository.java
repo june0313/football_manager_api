@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  * @author wayne
@@ -22,6 +23,11 @@ public class ClubRepository {
 
 	public Club findOne(Long clubId) {
 		return entityManager.find(Club.class, clubId);
+	}
+
+	public List<Club> findAll() {
+		String queryString = "SELECT c FROM Club c";
+		return entityManager.createQuery(queryString, Club.class).getResultList();
 	}
 
 }
