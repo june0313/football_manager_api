@@ -1,8 +1,8 @@
 package com.wayne.controller.player;
 
-import com.wayne.domain.Club;
-import com.wayne.domain.Player;
-import com.wayne.domain.PlayerDTO;
+import com.wayne.domain.club.Club;
+import com.wayne.domain.player.Player;
+import com.wayne.domain.player.PlayerDTO;
 import com.wayne.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

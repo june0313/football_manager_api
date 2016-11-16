@@ -1,7 +1,7 @@
 package com.wayne.repository;
 
 import com.wayne.configuration.RootContextConfiguration;
-import com.wayne.domain.Player;
+import com.wayne.domain.player.Player;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

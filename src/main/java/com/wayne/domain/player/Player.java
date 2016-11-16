@@ -1,7 +1,8 @@
-package com.wayne.domain;
+package com.wayne.domain.player;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Strings;
+import com.wayne.domain.club.Club;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

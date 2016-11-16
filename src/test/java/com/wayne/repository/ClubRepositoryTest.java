@@ -1,7 +1,7 @@
 package com.wayne.repository;
 
 import com.wayne.configuration.RootContextConfiguration;
-import com.wayne.domain.Club;
+import com.wayne.domain.club.Club;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,8 +1,8 @@
 package com.wayne.service;
 
-import com.wayne.domain.Club;
-import com.wayne.domain.ClubDTO;
-import com.wayne.domain.Player;
+import com.wayne.domain.club.Club;
+import com.wayne.domain.club.ClubDTO;
+import com.wayne.domain.player.Player;
 import com.wayne.repository.ClubRepository;
 import com.wayne.repository.PlayerRepository;
 import org.hibernate.Hibernate;

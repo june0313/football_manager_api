@@ -1,6 +1,6 @@
 package com.wayne.repository;
 
-import com.wayne.domain.Player;
+import com.wayne.domain.player.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
