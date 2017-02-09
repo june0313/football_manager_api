@@ -13,6 +13,8 @@ repositories {
 dependencies {
     // junit
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    // FEST fluent assertions
+    testCompile group: 'org.easytesting', name: 'fest-assert', version: '1.4'
 
     // spring
     compile group: 'org.springframework', name: 'spring-context', version: '4.3.3.RELEASE'
@@ -22,10 +24,10 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-orm', version: '4.3.3.RELEASE'
 
     // spring-data-jpa
-    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.10.4.RELEASE'
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.11.0.RELEASE'
 
     // hibernate
-    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.2.Final'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.6.Final'
 
     // databases
     compile group: 'com.h2database', name: 'h2', version: '1.4.192'
@@ -49,6 +51,7 @@ dependencies {
     // logback
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
 
-    // FEST fluent assertions
-    compile group: 'org.easytesting', name: 'fest-assert', version: '1.4'
+    // handlebars mvc
+    compile group: 'com.github.jknack', name: 'handlebars-springmvc', version: '4.0.6'
+
 }
